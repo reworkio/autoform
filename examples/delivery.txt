@@ -1,0 +1,20 @@
+Autoform delivery 0.1
+Request: invoice-intake-01
+Title: Invoice intake for a bookkeeping firm
+What it does: Watches a folder for supplier invoices, reads each PDF and adds one row per invoice to a spreadsheet, so nobody retypes them.
+How to try it: Open the demo sheet, drop any PDF from the samples folder into the inbox folder and wait about a minute for its row to appear.
+Tested: Ran all 50 sample invoices twice. 49 were read fully and one scanned invoice was sent to the review list.
+The client must provide: A mailbox or folder where invoices arrive, edit access to their spreadsheet, and ten real invoices to tune the reading.
+Checks:
+- [partly] All 50 sample invoices are read into the sheet
+  Evidence: 49 of 50 rows are in the sheet; the scanned invoice went to the review list instead.
+- [met] A duplicate invoice is flagged and not entered twice
+  Evidence: All three duplicates are marked in the Duplicate column, shown in the demo at 1:20.
+- [met] An invoice that cannot be read is listed for a person to check
+  Evidence: The scanned invoice appears on the Review tab with its file name and the reason.
+Not included: Nothing is posted to an accounting system, and handwritten invoices are not read.
+Hours: 7.5
+Follow-on: Posting approved rows to the accounting system with an approval step, about two weeks of work.
+Demo: https://example.com/demo/invoice-intake
+Code: https://example.com/code/invoice-intake
+Revision: 1

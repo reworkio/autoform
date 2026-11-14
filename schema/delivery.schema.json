@@ -1,0 +1,192 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/reworkio/autoform/main/schema/delivery.schema.json",
+  "title": "Autoform delivery",
+  "description": "What was built, how to try it, what was tested, what the client must provide, and an answer to every check of the request.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "autoform",
+    "kind",
+    "title",
+    "whatItDoes",
+    "howToTry",
+    "tested",
+    "clientProvides",
+    "checks",
+    "hours"
+  ],
+  "properties": {
+    "autoform": {
+      "const": "0.1"
+    },
+    "kind": {
+      "const": "delivery"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "The id of the request this answers."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 120
+    },
+    "whatItDoes": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What it does, for someone who has not seen it."
+    },
+    "howToTry": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "The link, any test login, and the steps to see it work."
+    },
+    "tested": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What it was tested on, and the result."
+    },
+    "clientProvides": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "The accounts, access and data the client must provide to run it."
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "description": "One answer per \"done when\" check of the request, in the same order.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check",
+          "result",
+          "evidence"
+        ],
+        "properties": {
+          "check": {
+            "type": "string",
+            "minLength": 5,
+            "maxLength": 300
+          },
+          "result": {
+            "enum": [
+              "met",
+              "partly",
+              "not_met"
+            ]
+          },
+          "evidence": {
+            "type": "string",
+            "minLength": 10,
+            "maxLength": 1000,
+            "description": "What shows the result."
+          }
+        }
+      }
+    },
+    "notIncluded": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What it does not do."
+    },
+    "hours": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 2000,
+      "description": "The effort it took."
+    },
+    "followOn": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What a larger piece of work would add."
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "demo": {
+          "type": "string",
+          "pattern": "^https?://"
+        },
+        "code": {
+          "type": "string",
+          "pattern": "^https?://"
+        }
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "number"
+      ],
+      "properties": {
+        "number": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "changes": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "What changed since the revision before. Required after the first."
+        }
+      },
+      "if": {
+        "properties": {
+          "number": {
+            "minimum": 2
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "changes"
+        ],
+        "properties": {
+          "changes": {
+            "minLength": 10
+          }
+        }
+      }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "date",
+        "by"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "accepted",
+            "not_accepted"
+          ]
+        },
+        "date": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+        },
+        "by": {
+          "enum": [
+            "client",
+            "reviewer"
+          ],
+          "description": "A role, never a name."
+        }
+      }
+    }
+  }
+}

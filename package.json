@@ -1,0 +1,14 @@
+{
+  "name": "@reworkio/autoform",
+  "version": "0.1.0",
+  "description": "Autoform: an open format for handing over automation work. One request, one delivery that answers it.",
+  "license": "MIT",
+  "author": "REWORKIO",
+  "main": "lib/index.js",
+  "bin": { "autoform": "bin/cli.js" },
+  "files": ["bin", "lib", "schema", "SPEC.md"],
+  "engines": { "node": ">=18" },
+  "scripts": { "test": "node --test" },
+  "devDependencies": { "ajv": "8.17.1" },
+  "keywords": ["automation", "handover", "delivery", "specification", "json-schema", "n8n", "make"]
+}

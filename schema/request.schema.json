@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/reworkio/autoform/main/schema/request.schema.json",
+  "title": "Autoform request",
+  "description": "What to build, for whom, on what data, and the checks that say it is done.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "autoform",
+    "kind",
+    "title",
+    "audience",
+    "build",
+    "data",
+    "handIn",
+    "doneWhen"
+  ],
+  "properties": {
+    "autoform": {
+      "const": "0.1"
+    },
+    "kind": {
+      "const": "request"
+    },
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120,
+      "description": "A name for this request that its delivery can point at."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 120
+    },
+    "audience": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "Who it is for and the problem they have. A kind of client, never a named one."
+    },
+    "build": {
+      "type": "string",
+      "minLength": 40,
+      "maxLength": 2000,
+      "description": "What to build."
+    },
+    "data": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What to build and test it on."
+    },
+    "handIn": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "What to hand in."
+    },
+    "doneWhen": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 5,
+        "maxLength": 300
+      },
+      "description": "The checks that say it is done. The delivery answers each one."
+    },
+    "hours": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 2000,
+      "description": "The effort expected."
+    },
+    "tools": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 60
+      }
+    },
+    "followOn": {
+      "type": "string",
+      "minLength": 20,
+      "maxLength": 2000,
+      "description": "The larger piece of work this one leads to."
+    }
+  }
+}

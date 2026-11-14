@@ -1,0 +1,18 @@
+{
+  "autoform": "0.1",
+  "kind": "request",
+  "id": "invoice-intake-01",
+  "title": "Invoice intake for a bookkeeping firm",
+  "audience": "A small bookkeeping firm that retypes supplier invoices from email into a spreadsheet every week.",
+  "build": "An automation that reads supplier invoices arriving as PDF attachments and writes one row per invoice to a spreadsheet: supplier, invoice number, date, net, tax and total.",
+  "data": "Fifty made-up supplier invoices as PDFs, three of them duplicates, in a shared folder.",
+  "handIn": "A link to the running automation, the spreadsheet it filled, and a short demo video.",
+  "doneWhen": [
+    "All 50 sample invoices are read into the sheet",
+    "A duplicate invoice is flagged and not entered twice",
+    "An invoice that cannot be read is listed for a person to check"
+  ],
+  "hours": 8,
+  "tools": ["n8n", "Google Sheets"],
+  "followOn": "Posting the approved rows to the firm's accounting system, with an approval step."
+}
