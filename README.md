@@ -44,14 +44,14 @@ The same documents as JSON: [request](examples/request.json), [delivery](example
 
 ```bash
 # Is this a valid request or delivery?
-npx github:reworkio/autoform validate delivery.json
+npx @reworkio/autoform validate delivery.json
 
 # Does the delivery answer every check of its request?
-npx github:reworkio/autoform validate delivery.json --request request.json
+npx @reworkio/autoform validate delivery.json --request request.json
 
 # Convert between the forms
-npx github:reworkio/autoform render delivery.json    # JSON to text
-npx github:reworkio/autoform parse delivery.txt      # text to JSON
+npx @reworkio/autoform render delivery.json    # JSON to text
+npx @reworkio/autoform parse delivery.txt      # text to JSON
 ```
 
 A file ending in `.json` is read as JSON, anything else as the plain-text form. When something is wrong it says where:
@@ -66,7 +66,7 @@ Exit status is `0` when valid, `1` when not, and `2` for bad usage or an unreada
 ### As a library
 
 ```bash
-npm install github:reworkio/autoform
+npm install @reworkio/autoform
 ```
 
 ```js
